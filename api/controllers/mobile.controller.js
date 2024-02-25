@@ -7,18 +7,15 @@ export const test = async (req, res, next) => {
 export const getMobile = async (req, res, next) => {
   try {
     const startIndex = parseInt(req.query.startIndex) || 0;
-    const limit = parseInt(req.query.limit) || 9;
+    const limit = parseInt(req.limit) || 100;
     const sortDirection = req.query.order === "asc" ? 1 : -1;
-    // const posts = await Mobile.find(...{ brand_name: req.query.brand_name })
-    //   .skip(startIndex)
-    //   .limit(limit);
-    console.log();
-    const posts = await Mobile.find().skip(startIndex).limit(limit);
+    console.log(req.body);
+    const mobiles = await Mobile.find(req.body).skip(startIndex).limit(limit);
     const totalPosts = await Mobile.countDocuments();
 
     res.status(200).json([
       {
-        posts,
+        mobiles,
         totalPosts,
       },
     ]);
