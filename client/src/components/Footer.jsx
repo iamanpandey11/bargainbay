@@ -2,84 +2,100 @@ import { Footer } from "flowbite-react";
 import { Link } from "react-router-dom";
 import logo from "../images/logo.jpeg";
 import {
-  BsFacebook,
-  BsInstagram,
-  BsTwitter,
-  BsGithub,
-  BsDribbble,
-} from "react-icons/bs";
+  AiFillFacebook,
+  AiOutlineInstagram,
+  AiOutlineTwitter,
+  AiFillGithub,
+  AiFillDribbbleSquare,
+} from "react-icons/ai";
+
 export default function FooterCom() {
   return (
-    <Footer container className="border border-t-8 border-teal-500">
-      <div className="w-full max-w-7xl mx-auto">
-        <div className="grid w-full justify-between sm:flex md:grid-cols-1">
-          <div className="mt-5">
-            <Link
-              to="/"
-              className="self-center whitespace-nowrap text-lg sm:text-xl font-semibold dark:text-white"
-            >
-              <img src={logo} alt="image" className="h-20" />
+    <Footer container className="bg-gray-800 text-white">
+      <div className="w-full max-w-7xl mx-auto py-8">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div className="text-center">
+            <Link to="/">
+              <img src={logo} alt="image" className="h-20 mx-auto" />
             </Link>
           </div>
-          <div className="grid grid-cols-2 gap-8 mt-4 sm:grid-cols-3 sm:gap-6">
-            <div>
-              <Footer.Title title="About" />
-              <Footer.LinkGroup col>
-                <Footer.Link
+          <div>
+            <h2 className="text-lg font-semibold mb-4">About</h2>
+            <ul className="space-y-2">
+              <li>
+                <Link to="/about" className="hover:text-blue-500">
+                  About Us
+                </Link>
+              </li>
+              <li>
+                <a
                   href="dummy"
+                  className="hover:text-blue-500"
                   target="_blank"
                   rel="noopener noreferrer"
                 >
                   Latest Gadget
-                </Footer.Link>
-                <Footer.Link
-                  href="/about"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  About
-                </Footer.Link>
-              </Footer.LinkGroup>
-            </div>
-            <div>
-              <Footer.Title title="Follow us" />
-              <Footer.LinkGroup col>
-                <Footer.Link
+                </a>
+              </li>
+            </ul>
+          </div>
+          <div>
+            <h2 className="text-lg font-semibold mb-4">Follow us</h2>
+            <ul className="space-y-2">
+              <li>
+                <a
                   href="https://www.github.com/iamanpandey11"
+                  className="hover:text-blue-500"
                   target="_blank"
                   rel="noopener noreferrer"
                 >
                   Github
-                </Footer.Link>
-                <Footer.Link href="#">Discord</Footer.Link>
-              </Footer.LinkGroup>
-            </div>
-            <div>
-              <Footer.Title title="Legal" />
-              <Footer.LinkGroup col>
-                <Footer.Link href="#">Privacy Policy</Footer.Link>
-                <Footer.Link href="#">Terms &amp; Conditions</Footer.Link>
-              </Footer.LinkGroup>
-            </div>
+                </a>
+              </li>
+              <li>
+                <a href="#" className="hover:text-blue-500">
+                  Discord
+                </a>
+              </li>
+            </ul>
+          </div>
+          <div>
+            <h2 className="text-lg font-semibold mb-4">Legal</h2>
+            <ul className="space-y-2">
+              <li>
+                <a href="#" className="hover:text-blue-500">
+                  Privacy Policy
+                </a>
+              </li>
+              <li>
+                <a href="#" className="hover:text-blue-500">
+                  Terms & Conditions
+                </a>
+              </li>
+            </ul>
           </div>
         </div>
-        <Footer.Divider />
-        <div className="w-full sm:flex sm:items-center sm:justify-between">
-          <Footer.Copyright
-            href="#"
-            by="BargainBay"
-            year={new Date().getFullYear()}
-          />
-          <div className="flex gap-6 sm:mt-0 mt-4 sm:justify-center">
-            <Footer.Icon href="#" icon={BsFacebook} />
-            <Footer.Icon href="#" icon={BsInstagram} />
-            <Footer.Icon href="#" icon={BsTwitter} />
-            <Footer.Icon
-              href="https://github.com/iamanpandey11"
-              icon={BsGithub}
-            />
-            <Footer.Icon href="#" icon={BsDribbble} />
-          </div>
+        <div className="flex justify-center mt-8">
+          <a href="#" className="mr-4 hover:text-blue-500">
+            <AiFillFacebook size={24} />
+          </a>
+          <a href="#" className="mr-4 hover:text-blue-500">
+            <AiOutlineInstagram size={24} />
+          </a>
+          <a href="#" className="mr-4 hover:text-blue-500">
+            <AiOutlineTwitter size={24} />
+          </a>
+          <a
+            href="https://github.com/iamanpandey11"
+            className="mr-4 hover:text-blue-500"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <AiFillGithub size={24} />
+          </a>
+          <a href="#" className="hover:text-blue-500">
+            <AiFillDribbbleSquare size={24} />
+          </a>
         </div>
       </div>
     </Footer>
