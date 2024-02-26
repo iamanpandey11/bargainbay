@@ -1,4 +1,4 @@
-import { Avatar, Button, Dropdown, Navbar, TextInput } from "flowbite-react";
+import { Button, Navbar, TextInput } from "flowbite-react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AiOutlineSearch } from "react-icons/ai";
 import { FaMoon, FaSun } from "react-icons/fa";
@@ -50,78 +50,92 @@ export default function Header() {
   };
 
   return (
-    <Navbar className="border-b-2">
-      <Link
-        to="/"
-        className="self-center whitespace-nowrap text-sm sm:text-xl
-        font-semibold dark:text-white"
-      >
-        <img src={logo} alt="image" className="h-20" />
-      </Link>
+    <Navbar className="bg-gray-100 text-white">
+      <div className="flex items-center justify-between px-4 py-2">
+        <Link to="/">
+          <img src={logo} alt="image" className="h-16" />
+        </Link>
 
-      <form onSubmit={handleSubmit}>
-        <TextInput
-          type="text"
-          placeholder="Search..."
-          rightIcon={AiOutlineSearch}
-          className="hidden lg:inline"
-          value={searchTerm}
-          onChange={(e) => setSearchTerm(e.target.value)}
-        />
-      </form>
-      <Button className="w-12 h-10 lg:hidden" color="gray" pill>
-        <AiOutlineSearch />
-      </Button>
-      <div className="flex gap-2 md:order-2">
-        <Button
-          className="w-12 h-10 hidden sm:inline"
-          color="gray"
-          pill
-          onClick={() => dispatch(toggleTheme())}
-        >
-          {theme === "light" ? <FaSun /> : <FaMoon />}
-        </Button>
-        {currentUser ? (
-          <Dropdown
-            arrowIcon={false}
-            inline
-            label={
-              <Avatar alt="user" img={currentUser.profilePicture} rounded />
-            }
+        <form onSubmit={handleSubmit} className="flex items-center">
+          <TextInput
+            type="text"
+            placeholder="Search..."
+            rightIcon={AiOutlineSearch}
+            className="hidden lg:inline bg-gray-700 text-white px-2 py-1 rounded-lg focus:outline-none focus:bg-gray-600"
+            value={searchTerm}
+            onChange={(e) => setSearchTerm(e.target.value)}
+          />
+          <Button type="submit" className="ml-2 lg:hidden" color="gray" pill>
+            <AiOutlineSearch />
+          </Button>
+        </form>
+
+        <div className="flex items-center gap-4">
+          <Button
+            className="w-10 h-10 hidden sm:inline"
+            color="gray"
+            pill
+            onClick={() => dispatch(toggleTheme())}
           >
-            <Dropdown.Header>
-              <span className="block text-sm">@{currentUser.username}</span>
-              <span className="block text-sm font-medium truncate">
-                {currentUser.email}
-              </span>
-            </Dropdown.Header>
-            <Link to={"/dashboard?tab=profile"}>
-              <Dropdown.Item>Profile</Dropdown.Item>
+            {theme === "light" ? <FaSun /> : <FaMoon />}
+          </Button>
+          {currentUser ? (
+            <div className="flex items-center gap-2">
+              <span className="text-black">@{currentUser.username}</span>
+              <Button onClick={handleSignout} outline>
+                Sign out
+              </Button>
+            </div>
+          ) : (
+            <Link to="/sign-in">
+              <Button gradientDuoTone="purpleToBlue" outline>
+                Sign In
+              </Button>
             </Link>
-            <Dropdown.Divider />
-            <Dropdown.Item onClick={handleSignout}>Sign out</Dropdown.Item>
-          </Dropdown>
-        ) : (
-          <Link to="/sign-in">
-            <Button gradientDuoTone="purpleToBlue" outline>
-              Sign In
-            </Button>
-          </Link>
-        )}
-        <Navbar.Toggle />
+          )}
+        </div>
       </div>
 
-      <Navbar.Collapse>
-        <Navbar.Link active={path === "/"} as={"div"}>
-          <Link to="/">Home</Link>
-        </Navbar.Link>
-        <Navbar.Link active={path === "/about"} as={"div"}>
-          <Link to="/about">About</Link>
-        </Navbar.Link>
-        <Navbar.Link active={path === "/projects"} as={"div"}>
-          <Link to="/mobile">Mobiles</Link>
-        </Navbar.Link>
-      </Navbar.Collapse>
+      <div className="flex justify-center py-2">
+        <Link
+          to="/"
+          className={`mr-4 ${
+            path === "/" ? "text-blue-500" : "text-gray-300 hover:text-blue-500"
+          }`}
+        >
+          Home
+        </Link>
+        <Link
+          to="/about"
+          className={`mr-4 ${
+            path === "/about"
+              ? "text-blue-500"
+              : "text-gray-300 hover:text-blue-500"
+          }`}
+        >
+          About
+        </Link>
+        <Link
+          to="/mobile"
+          className={`mr-4 ${
+            path === "/mobile"
+              ? "text-blue-500"
+              : "text-gray-300 hover:text-blue-500"
+          }`}
+        >
+          Mobiles
+        </Link>
+        <Link
+          to="/laptop"
+          className={`mr-4 ${
+            path === "/laptop"
+              ? "text-blue-500"
+              : "text-gray-300 hover:text-blue-500"
+          }`}
+        >
+          Laptops
+        </Link>
+      </div>
     </Navbar>
   );
 }
