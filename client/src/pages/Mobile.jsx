@@ -7,9 +7,9 @@ function Mobile() {
     // Assuming you fetch the data from an API endpoint
     const fetchData = async () => {
       try {
-        const response = await fetch("/api/mobile/get");
+        const response = await fetch("/api/mobile//get");
         const data = await response.json();
-        setMobiles(data[0].posts);
+        setMobiles(data[0].mobiles);
       } catch (error) {
         console.error("Error fetching mobile data:", error);
       }
@@ -18,6 +18,7 @@ function Mobile() {
     fetchData();
   }, []);
   // fetchMobile();
+  console.log(mobiles);
   return (
     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
       {mobiles.map((mobile) => (
