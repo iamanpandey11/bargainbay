@@ -9,7 +9,7 @@ function Mobile() {
       try {
         const response = await fetch("/api/mobile//get");
         const data = await response.json();
-        setMobiles(data[0].mobiles);
+        setMobiles(data[0].posts);
       } catch (error) {
         console.error("Error fetching mobile data:", error);
       }
