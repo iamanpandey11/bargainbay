@@ -50,7 +50,7 @@ export default function Header() {
   };
 
   return (
-    <Navbar className="border-b-2">
+    <Navbar className="border-b-2 bg-blue-500">
       <Link
         to="/"
         className="self-center whitespace-nowrap text-sm sm:text-xl
@@ -58,6 +58,18 @@ export default function Header() {
       >
         <img src={logo} alt="image" className="h-20" />
       </Link>
+
+      <Navbar.Collapse>
+        <Navbar.Link active={path === "/"} as={"div"}>
+          <Link to="/">Home</Link>
+        </Navbar.Link>
+        <Navbar.Link active={path === "/laptop"} as={"div"}>
+          <Link to="/laptop">Laptop</Link>
+        </Navbar.Link>
+        <Navbar.Link active={path === "/mobile"} as={"div"}>
+          <Link to="/mobile">Mobiles</Link>
+        </Navbar.Link>
+      </Navbar.Collapse>
 
       <form onSubmit={handleSubmit}>
         <TextInput
@@ -110,18 +122,6 @@ export default function Header() {
         )}
         <Navbar.Toggle />
       </div>
-
-      <Navbar.Collapse>
-        <Navbar.Link active={path === "/"} as={"div"}>
-          <Link to="/">Home</Link>
-        </Navbar.Link>
-        <Navbar.Link active={path === "/laptop"} as={"div"}>
-          <Link to="/laptop">Laptop</Link>
-        </Navbar.Link>
-        <Navbar.Link active={path === "/projects"} as={"div"}>
-          <Link to="/mobile">Mobiles</Link>
-        </Navbar.Link>
-      </Navbar.Collapse>
     </Navbar>
   );
 }
