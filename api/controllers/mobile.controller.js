@@ -9,11 +9,15 @@ export const getMobile = async (req, res, next) => {
     const startIndex = parseInt(req.query.startIndex) || 0;
     const limit = parseInt(req.query.limit) || 9;
     const sortDirection = req.query.order === "asc" ? 1 : -1;
+    const { searchTerm, sort, category } = req.query;
+    console.log(searchTerm);
+    console.log(sort);
+    console.log(category);
     // const posts = await Mobile.find(...{ brand_name: req.query.brand_name })
     //   .skip(startIndex)
     //   .limit(limit);
-    console.log();
-    const posts = await Mobile.find().skip(startIndex).limit(limit);
+
+    const posts = await Mobile.find({}).skip(startIndex).limit(limit);
     const totalPosts = await Mobile.countDocuments();
 
     res.status(200).json([

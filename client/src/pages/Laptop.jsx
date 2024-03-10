@@ -24,7 +24,11 @@ function Laptop() {
           key={laptop._id}
           className="border rounded-lg overflow-hidden shadow-lg"
         >
-          <img src={laptop.img_link} alt={laptop.name} className="w-full" />
+          <img
+            src={laptop.img_link}
+            alt={laptop.name}
+            className="w-full h-96"
+          />
           <div className="p-4">
             <h2 className="text-xl font-bold mb-2">{laptop.name}</h2>
             <p>Price: {laptop.price} Rs.</p>
